@@ -1,0 +1,32 @@
+---
+version: '3.4'
+services:
+  jenkins:
+    build:
+      context: jenkins/
+      dockerfile: Dockerfile
+    image: "rg-jenkins"
+    networks:
+      net1:
+        ipv4_address: 172.20.0.100   
+    ports:
+      - 8080:8080
+      - 50000:50000
+    privileged: true
+    volumes:
+        - jenkins-home:/var/jenkins_home:z
+        # reallllly dont forget the rw... its a bad time :)
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /run/netns:/run/netns
+networks:
+  net1:
+    # naming this to match the containerlab network to put everything in the same network to make life easy
+    name: rglab
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
+
+volumes:
+  jenkins-home:
+    driver: local

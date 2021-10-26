@@ -1,0 +1,19 @@
+jobs:
+  - script: >
+      job('Seed Jobs') {
+        triggers {
+          hudsonStartupTrigger {
+            nodeParameterName("master")
+            label("master")
+            quietPeriod("0")
+            runOnChoice("False")
+          }
+        }
+        steps {
+          shell('cp /usr/share/jenkins/seed_jobs/jobinterfacedescr.groovy .')
+          shell('cp /usr/share/jenkins/seed_jobs/jobpasswordrotate.groovy .')
+          jobDsl {
+            targets '*.groovy'
+          }
+        }
+      }
