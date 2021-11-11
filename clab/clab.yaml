@@ -1,0 +1,41 @@
+---
+name: rg-demo2
+topology:
+  kinds:
+    ceos:
+      image: ceosimage:4.27.0F
+  nodes:
+    spine1:
+      kind: ceos
+      startup-config: configs/spine1
+      mgmt_ipv4: 172.20.20.11
+      ports:
+      - 21022:22
+      - 21830:830
+    # spine2:
+    #   kind: ceos
+    #   startup-config: configs/spine2
+    #   mgmt_ipv4: 172.20.20.12
+    #   ports:
+    #   - 22022:22
+    #   - 22830:830
+    # leaf1:
+    #   kind: ceos
+    #   startup-config: configs/leaf1
+    #   mgmt_ipv4: 172.20.20.21
+    #   ports:
+    #   - 22022:22
+    #   - 23830:830
+    # leaf2:
+    #   kind: ceos
+    #   startup-config: configs/leaf2
+    #   mgmt_ipv4: 172.20.20.22
+    #   ports:
+    #   - 24022:22  
+    #   - 24830:830
+
+  # links:
+  #   - endpoints: ["leaf1:eth1", "spine1:eth1"]
+  #   - endpoints: ["leaf1:eth2", "spine2:eth1"]
+  #   - endpoints: ["leaf2:eth1", "spine1:eth2"]
+  #   - endpoints: ["leaf2:eth2", "spine2:eth2"]

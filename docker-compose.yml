@@ -1,14 +1,14 @@
 ---
 version: '3.4'
 services:
-  jenkins:
+  rg-jenkins:
     build:
       context: jenkins/
       dockerfile: Dockerfile
     image: "rg-jenkins"
     networks:
       net1:
-        ipv4_address: 172.20.0.100   
+        ipv4_address: 172.254.0.100   
     ports:
       - 8080:8080
       - 50000:50000
@@ -18,15 +18,33 @@ services:
         # reallllly dont forget the rw... its a bad time :)
         - /var/run/docker.sock:/var/run/docker.sock
         - /run/netns:/run/netns
+
+  rg-clab-launcher:
+      build:
+        context: clab/
+        dockerfile: Dockerfile
+      image: "rg-clab-launcher"
+      networks:
+        net1:
+          ipv4_address: 172.254.0.254
+      privileged: true
+      pid: host
+      working_dir: ${PWD}/clab/
+      volumes:
+          - ${PWD}/clab/:${PWD}/clab/
+          - /var/run/docker.sock:/var/run/docker.sock
+          - /run/netns:/run/netns
+
 networks:
   net1:
     # naming this to match the containerlab network to put everything in the same network to make life easy
     name: rglab
     ipam:
       config:
-        - subnet: 172.20.0.0/24
-          gateway: 172.20.0.1
+        - subnet: 172.254.0.0/24
+          gateway: 172.254.0.1
 
 volumes:
   jenkins-home:
     driver: local
+

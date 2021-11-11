@@ -1,0 +1,7 @@
+dummy 16384 0 - Live 0xffffffffc0256000
+xfrm_user 36864 3 - Live 0xffffffffc0236000
+xfrm_algo 16384 1 xfrm_user, Live 0xffffffffc022e000
+grpcfuse 16384 0 - Live 0xffffffffc0222000 (O)
+vmw_vsock_virtio_transport 16384 2 - Live 0xffffffffc0229000
+vmw_vsock_virtio_transport_common 28672 1 vmw_vsock_virtio_transport, Live 0xffffffffc021a000
+vsock 36864 9 vmw_vsock_virtio_transport,vmw_vsock_virtio_transport_common, Live 0xffffffffc020a000
