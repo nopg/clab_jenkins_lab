@@ -1,6 +1,0 @@
-all:
-  children:
-    ceos:
-      hosts:
-        clab-rg-demo2-spine1:
-          ansible_host: 172.20.20.11

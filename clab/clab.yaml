@@ -8,7 +8,7 @@ topology:
     spine1:
       kind: ceos
       startup-config: configs/spine1
-      mgmt_ipv4: 172.20.20.11
+      mgmt_ipv4: 172.254.0.11
       ports:
       - 21022:22
       - 21830:830
