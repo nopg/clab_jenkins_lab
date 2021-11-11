@@ -1,5 +1,7 @@
 ---
 name: rg-demo2
+mgmt:
+  network: rglab
 topology:
   kinds:
     ceos:

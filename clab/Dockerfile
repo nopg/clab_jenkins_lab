@@ -11,4 +11,4 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 COPY launcher.py /
 
-#ENTRYPOINT ["./launcher.py"]
+ENTRYPOINT ["./launcher.py"]
