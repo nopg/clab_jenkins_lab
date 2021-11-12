@@ -14,13 +14,13 @@ topology:
       ports:
       - 21022:22
       - 21830:830
-    # spine2:
-    #   kind: ceos
-    #   startup-config: configs/spine2
-    #   mgmt_ipv4: 172.20.20.12
-    #   ports:
-    #   - 22022:22
-    #   - 22830:830
+    spine2:
+      kind: ceos
+      startup-config: configs/spine2
+      mgmt_ipv4: 172.254.0.12
+      ports:
+      - 22022:22
+      - 22830:830
     # leaf1:
     #   kind: ceos
     #   startup-config: configs/leaf1
@@ -36,7 +36,9 @@ topology:
     #   - 24022:22  
     #   - 24830:830
 
-  # links:
+  links:
+    - endpoints: ["spine1:eth1", "spine2:eth1"]
+    - endpoints: ["spine1:eth2", "spine2:eth2"]
   #   - endpoints: ["leaf1:eth1", "spine1:eth1"]
   #   - endpoints: ["leaf1:eth2", "spine2:eth1"]
   #   - endpoints: ["leaf2:eth1", "spine1:eth2"]

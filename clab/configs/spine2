@@ -5,7 +5,7 @@ username carl privilege 15 secret carl
 service routing protocols model multi-agent
 !
 interface Management0
-   ip address 172.20.0.12/24
+   ip address 172.254.0.12/24
 !
 management api gnmi
    transport grpc default
@@ -32,6 +32,9 @@ int Ethernet2
    no shut
 !
 ip routing
+!
+ip route 0.0.0.0/0 172.254.0.1
+!
 router ospf 1
    network 10.255.0.0 0.0.255.255 area 0
 !
