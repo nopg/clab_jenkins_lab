@@ -34,8 +34,27 @@ services:
           - ${PWD}/clab/:${PWD}/clab/
           - /var/run/docker.sock:/var/run/docker.sock
           - /run/netns:/run/netns
-      # command:
-      #     - ./launcher.py
+
+  # rg-gitlab:
+  #   image: 'gitlab/gitlab-ee:latest'
+  #   restart: always
+  #   hostname: 'gitlab.example.com'
+  #   environment:
+  #     GITLAB_OMNIBUS_CONFIG: |
+  #       external_url 'http://gitlab.example.com:8929'
+  #       gitlab_rails['gitlab_shell_ssh_port'] = 2224
+  #   networks:
+  #     net1:
+  #       ipv4_address: 172.254.0.253
+  #   ports:
+  #     - '8929:8929'
+  #     - '2224:2224'
+  #   volumes:
+  #     - '${PWD}/gitlab/config:/etc/gitlab'
+  #     - '${PWD}/gitlab/logs:/var/log/gitlab'
+  #     - '${PWD}/gitlab/data:/var/opt/gitlab'
+
+
 
 networks:
   net1:

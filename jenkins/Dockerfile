@@ -16,6 +16,7 @@ RUN apt-get update && \
 	    gnupg2 \
 	    software-properties-common \
 	    docker-ce=5:20.10.8~3-0~debian-buster && \
+		python3.9 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
