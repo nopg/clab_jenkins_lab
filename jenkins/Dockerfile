@@ -16,8 +16,13 @@ RUN apt-get update && \
 	    gnupg2 \
 	    software-properties-common \
 	    docker-ce=5:20.10.8~3-0~debian-buster && \
-		python3.9 && \
-    apt-get clean && \
+		python3.9
+
+RUN apt-get install -yq python3-pip
+
+RUN ls
+
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
 # being lazy and making jenkins a sudoer so we dont need to futz w/ docker.sock permissions
@@ -37,7 +42,12 @@ ENV JENKINS_PASS admin
 COPY cfg-default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY cfg-disable-script-security.groovy /usr/share/jenkins/ref/init.groovy.d/
 
-# COPY jobseed.yaml /usr/share/jenkins/seed_jobs/
+COPY builder/cfg_repo_builder.py /usr/share/jenkins
+COPY builder/requirements.txt /usr/share/jenkins
+COPY builder/requirements-dev.txt /usr/share/jenkins
+
+COPY jobseed.yaml /usr/share/jenkins/seed_jobs/
 # COPY jobinterfacedescr.groovy /usr/share/jenkins/seed_jobs/
 # COPY jobpasswordrotate.groovy /usr/share/jenkins/seed_jobs/
-# ENV CASC_JENKINS_CONFIG /usr/share/jenkins/seed_jobs/jobseed.yaml
+COPY jobcfgrepo.groovy /usr/share/jenkins/seed_jobs/
+ENV CASC_JENKINS_CONFIG /usr/share/jenkins/seed_jobs/jobseed.yaml

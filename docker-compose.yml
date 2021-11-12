@@ -59,7 +59,7 @@ services:
 networks:
   net1:
     # naming this to match the containerlab network to put everything in the same network to make life easy
-    name: rglab
+    name: rgclab
     ipam:
       config:
         - subnet: 172.254.0.0/24

@@ -1,0 +1,3 @@
+[submodule "demo/temp-cfgrepo"]
+	path = demo/temp-cfgrepo
+	url = https://github.com/glspi/temp-cfgrepo.git

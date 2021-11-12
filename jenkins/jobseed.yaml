@@ -10,8 +10,7 @@ jobs:
           }
         }
         steps {
-          shell('cp /usr/share/jenkins/seed_jobs/jobinterfacedescr.groovy .')
-          shell('cp /usr/share/jenkins/seed_jobs/jobpasswordrotate.groovy .')
+          shell('cp /usr/share/jenkins/seed_jobs/jobcfgrepo.groovy .')
           jobDsl {
             targets '*.groovy'
           }
