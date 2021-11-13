@@ -42,10 +42,6 @@ ENV JENKINS_PASS admin
 COPY cfg-default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY cfg-disable-script-security.groovy /usr/share/jenkins/ref/init.groovy.d/
 
-COPY builder/cfg_repo_builder.py /usr/share/jenkins
-COPY builder/requirements.txt /usr/share/jenkins
-COPY builder/requirements-dev.txt /usr/share/jenkins
-
 COPY jobseed.yaml /usr/share/jenkins/seed_jobs/
 # COPY jobinterfacedescr.groovy /usr/share/jenkins/seed_jobs/
 # COPY jobpasswordrotate.groovy /usr/share/jenkins/seed_jobs/
