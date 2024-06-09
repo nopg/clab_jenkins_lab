@@ -21,7 +21,7 @@ pipelineJob("cfg-repo-builder") {
                                             extensions: [],
                                             userRemoteConfigs: [[
                                                 credentialsId: '7b4834fd-ed61-47d4-9d79-a0caac9f2df9',
-                                                url: 'https://github.com/glspi/temp-cfgrepo.git',
+                                                url: 'https://github.com/nopg/temp-cfgrepo.git',
                                             ]]
                                         ])
                                     }
